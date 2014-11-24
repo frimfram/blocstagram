@@ -7,6 +7,7 @@
 //
 
 #import "BLCAppDelegate.h"
+#import "BLCImagesTableViewController.h"
 
 @interface BLCAppDelegate ()
 
@@ -18,9 +19,9 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
-    /*
-    self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:[[BLCWebBrowserViewController alloc] init]];
-     */
+    
+    self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:[[BLCImagesTableViewController alloc] init]];
+    
     
     [self.window makeKeyAndVisible];
     
