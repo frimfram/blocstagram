@@ -1,5 +1,5 @@
 //
-//  AppDelegate.h
+//  BLCAppDelegate.h
 //  Blocstagram
 //
 //  Created by Jean Ro on 11/23/14.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+@interface BLCAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 

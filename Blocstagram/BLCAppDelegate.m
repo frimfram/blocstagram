@@ -1,22 +1,29 @@
 //
-//  AppDelegate.m
+//  BLCAppDelegate.m
 //  Blocstagram
 //
 //  Created by Jean Ro on 11/23/14.
 //  Copyright (c) 2014 Jean Ro. All rights reserved.
 //
 
-#import "AppDelegate.h"
+#import "BLCAppDelegate.h"
 
-@interface AppDelegate ()
+@interface BLCAppDelegate ()
 
 @end
 
-@implementation AppDelegate
+@implementation BLCAppDelegate
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.window.backgroundColor = [UIColor whiteColor];
+    /*
+    self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:[[BLCWebBrowserViewController alloc] init]];
+     */
+    
+    [self.window makeKeyAndVisible];
+    
     return YES;
 }
 

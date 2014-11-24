@@ -8,9 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		02ED6EAA1A22E8AB00C48C49 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 02ED6EA91A22E8AB00C48C49 /* main.m */; };
-		02ED6EAD1A22E8AB00C48C49 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 02ED6EAC1A22E8AB00C48C49 /* AppDelegate.m */; };
-		02ED6EB01A22E8AB00C48C49 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02ED6EAF1A22E8AB00C48C49 /* ViewController.m */; };
-		02ED6EB31A22E8AB00C48C49 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02ED6EB11A22E8AB00C48C49 /* Main.storyboard */; };
+		02ED6EAD1A22E8AB00C48C49 /* BLCAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 02ED6EAC1A22E8AB00C48C49 /* BLCAppDelegate.m */; };
 		02ED6EB51A22E8AB00C48C49 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02ED6EB41A22E8AB00C48C49 /* Images.xcassets */; };
 		02ED6EB81A22E8AB00C48C49 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 02ED6EB61A22E8AB00C48C49 /* LaunchScreen.xib */; };
 		02ED6EC41A22E8AB00C48C49 /* BlocstagramTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 02ED6EC31A22E8AB00C48C49 /* BlocstagramTests.m */; };
@@ -30,11 +28,8 @@
 		02ED6EA41A22E8AB00C48C49 /* Blocstagram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Blocstagram.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		02ED6EA81A22E8AB00C48C49 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		02ED6EA91A22E8AB00C48C49 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		02ED6EAB1A22E8AB00C48C49 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		02ED6EAC1A22E8AB00C48C49 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		02ED6EAE1A22E8AB00C48C49 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		02ED6EAF1A22E8AB00C48C49 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		02ED6EB21A22E8AB00C48C49 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		02ED6EAB1A22E8AB00C48C49 /* BLCAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BLCAppDelegate.h; sourceTree = "<group>"; };
+		02ED6EAC1A22E8AB00C48C49 /* BLCAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BLCAppDelegate.m; sourceTree = "<group>"; };
 		02ED6EB41A22E8AB00C48C49 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		02ED6EB71A22E8AB00C48C49 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		02ED6EBD1A22E8AB00C48C49 /* BlocstagramTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BlocstagramTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -81,11 +76,8 @@
 		02ED6EA61A22E8AB00C48C49 /* Blocstagram */ = {
 			isa = PBXGroup;
 			children = (
-				02ED6EAB1A22E8AB00C48C49 /* AppDelegate.h */,
-				02ED6EAC1A22E8AB00C48C49 /* AppDelegate.m */,
-				02ED6EAE1A22E8AB00C48C49 /* ViewController.h */,
-				02ED6EAF1A22E8AB00C48C49 /* ViewController.m */,
-				02ED6EB11A22E8AB00C48C49 /* Main.storyboard */,
+				02ED6EAB1A22E8AB00C48C49 /* BLCAppDelegate.h */,
+				02ED6EAC1A22E8AB00C48C49 /* BLCAppDelegate.m */,
 				02ED6EB41A22E8AB00C48C49 /* Images.xcassets */,
 				02ED6EB61A22E8AB00C48C49 /* LaunchScreen.xib */,
 				02ED6EA71A22E8AB00C48C49 /* Supporting Files */,
@@ -199,7 +191,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				02ED6EB31A22E8AB00C48C49 /* Main.storyboard in Resources */,
 				02ED6EB81A22E8AB00C48C49 /* LaunchScreen.xib in Resources */,
 				02ED6EB51A22E8AB00C48C49 /* Images.xcassets in Resources */,
 			);
@@ -219,8 +210,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				02ED6EB01A22E8AB00C48C49 /* ViewController.m in Sources */,
-				02ED6EAD1A22E8AB00C48C49 /* AppDelegate.m in Sources */,
+				02ED6EAD1A22E8AB00C48C49 /* BLCAppDelegate.m in Sources */,
 				02ED6EAA1A22E8AB00C48C49 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -244,14 +234,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		02ED6EB11A22E8AB00C48C49 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				02ED6EB21A22E8AB00C48C49 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		02ED6EB61A22E8AB00C48C49 /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
