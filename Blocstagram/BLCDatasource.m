@@ -55,6 +55,7 @@
             BLCMedia *media = [[BLCMedia alloc] init];
             media.user = [self randomUser];
             media.image = image;
+            media.caption = [self randomCaption];
             
             NSUInteger commentCount = arc4random_uniform(10);
             NSMutableArray *randomComments = [NSMutableArray array];
@@ -101,6 +102,20 @@
     comment.text = randomSentence;
     
     return comment;
+}
+
+- (NSString *) randomCaption {
+    
+    NSUInteger wordCount = arc4random_uniform(5);
+    
+    NSMutableString *randomSentence = [[NSMutableString alloc] init];
+    
+    for (int i  = 0; i <= wordCount; i++) {
+        NSString *randomWord = [self randomStringOfLength:arc4random_uniform(12)];
+        [randomSentence appendFormat:@"%@ ", randomWord];
+    }
+    
+    return randomSentence;
 }
 
 -(NSString *) randomStringOfLength:(NSUInteger) len {

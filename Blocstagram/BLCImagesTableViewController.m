@@ -11,9 +11,10 @@
 #import "BLCMedia.h"
 #import "BLCUser.h"
 #import "BLCComment.h"
+#import "BLCMediaTableViewCell.h"
 
 @interface BLCImagesTableViewController ()
-
+@property (nonatomic, strong) UILongPressGestureRecognizer *longPressGesture;
 @end
 
 @implementation BLCImagesTableViewController
@@ -21,7 +22,8 @@
 -(id)initWithStyle:(UITableViewStyle)style {
     self = [super initWithStyle:style];
     if(self) {
-
+        self.longPressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(tableLongPressed:)];
+        [self.tableView addGestureRecognizer:self.longPressGesture];
     }
     return self;
 }
@@ -29,13 +31,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"imageCell"];
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    [self.tableView registerClass:[BLCMediaTableViewCell class] forCellReuseIdentifier:@"mediaCell"];
+ 
 }
 
 - (void)didReceiveMemoryWarning {
@@ -47,6 +44,18 @@
     return [BLCDatasource sharedInstance].mediaItems;
 }
 
+-(void)setEditing:(BOOL)editing animated:(BOOL)animated {
+    [super setEditing:editing animated:animated];
+    [self.tableView setEditing:editing animated:YES];
+}
+
+-(void)tableLongPressed:(UILongPressGestureRecognizer *)recognizer {
+    if(recognizer.state == UIGestureRecognizerStateRecognized) {
+        
+        [self setEditing:(!self.editing) animated:YES];
+    }
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -55,31 +64,16 @@
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"imageCell" forIndexPath:indexPath];
-    
-    static NSInteger imageViewTag = 1234;
-    UIImageView *imageView = (UIImageView *)[cell.contentView viewWithTag:imageViewTag];
-    
-    if(!imageView) {
-        imageView = [[UIImageView alloc] init];
-        imageView.contentMode = UIViewContentModeScaleToFill;
-        imageView.frame = cell.contentView.bounds;
-        imageView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
-        
-        imageView.tag = imageViewTag;
-        [cell.contentView addSubview:imageView];
-    }
-    
-    BLCMedia *item = [self items][indexPath.row];
-    imageView.image = item.image;
+
+    BLCMediaTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"mediaCell" forIndexPath:indexPath];
+    cell.mediaItem = [BLCDatasource sharedInstance].mediaItems[indexPath.row];
     
     return cell;
 }
 
 -(CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     BLCMedia *item = [self items][indexPath.row];
-    UIImage *image = item.image;
-    CGFloat newHeight = (CGRectGetWidth(self.view.frame)/image.size.width) * image.size.height;
+    CGFloat newHeight = [BLCMediaTableViewCell heightForMediaItem:item width:CGRectGetWidth(self.view.frame)];
     return newHeight;
 }
 
