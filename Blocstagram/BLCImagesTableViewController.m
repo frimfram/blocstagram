@@ -31,8 +31,44 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [[BLCDatasource sharedInstance] addObserver:self forKeyPath:@"mediaItems" options:0 context:nil];
+    
     [self.tableView registerClass:[BLCMediaTableViewCell class] forCellReuseIdentifier:@"mediaCell"];
  
+}
+
+-(void) dealloc {
+    [[BLCDatasource sharedInstance] removeObserver:self forKeyPath:@"mediaItems"];
+}
+
+-(void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+    if(object == [BLCDatasource sharedInstance] && [keyPath isEqualToString:@"mediaItems"]) {
+        int kindOfChange = [change[NSKeyValueChangeKindKey] intValue];
+        if(kindOfChange == NSKeyValueChangeSetting) {
+            [self.tableView reloadData];
+        }else if( kindOfChange == NSKeyValueChangeInsertion ||
+                 kindOfChange == NSKeyValueChangeRemoval ||
+                 kindOfChange == NSKeyValueChangeReplacement) {
+            NSIndexSet *indexSetOfChanges = change[NSKeyValueChangeIndexesKey];
+            NSMutableArray *indexPathsThatChanged = [NSMutableArray array];
+            [indexSetOfChanges enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL *stop) {
+                NSIndexPath *newIndexPath = [NSIndexPath indexPathForRow:idx inSection:0];
+                [indexPathsThatChanged addObject:newIndexPath];
+            }];
+            
+            [self.tableView beginUpdates];
+            
+            if(kindOfChange == NSKeyValueChangeInsertion) {
+                [self.tableView insertRowsAtIndexPaths:indexPathsThatChanged withRowAnimation:UITableViewRowAnimationAutomatic];
+            }else if(kindOfChange == NSKeyValueChangeRemoval) {
+                [self.tableView deleteRowsAtIndexPaths:indexPathsThatChanged withRowAnimation:UITableViewRowAnimationAutomatic];
+            }else if (kindOfChange == NSKeyValueChangeReplacement) {
+                [self.tableView reloadRowsAtIndexPaths:indexPathsThatChanged withRowAnimation:UITableViewRowAnimationAutomatic];
+            }
+            
+            [self.tableView endUpdates];
+        }
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -89,12 +125,8 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source
-        //[tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-        
-        [[BLCDatasource sharedInstance] removeMediaItemAtIndex:(long)indexPath.row];
-        
-        NSLog(@"Removed row: %ld", (long)indexPath.row);
-        [tableView reloadData];
+        BLCMedia *item = self.items[indexPath.row];
+        [[BLCDatasource sharedInstance] deleteMediaItem:item];
     } else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
     }   
