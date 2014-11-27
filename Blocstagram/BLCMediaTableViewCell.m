@@ -61,7 +61,7 @@ static NSParagraphStyle *paragraphStyle;
     [layoutCell layoutIfNeeded];
     
     // The height will be wherever the bottom of the comments label is
-    return CGRectGetMaxY(layoutCell.commentLabel.frame);
+    return (CGRectGetMaxY(layoutCell.commentLabel.frame) + 65);  //adjust for the nav bar
 }
 
 -(id) initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
@@ -144,7 +144,7 @@ static NSParagraphStyle *paragraphStyle;
         CGSize commentLabelSize = [self.commentLabel sizeThatFits:maxSize];
         
         self.usernameAndCaptionLabelHeightConstraint.constant = usernameLabelSize.height + 20;
-        self.commentLabelHeightConstraint.constant = commentLabelSize.height + 50;
+        self.commentLabelHeightConstraint.constant = commentLabelSize.height + 20;
 
         self.separatorInset = UIEdgeInsetsMake(0, 0, 0, CGRectGetWidth(self.bounds));
     }
