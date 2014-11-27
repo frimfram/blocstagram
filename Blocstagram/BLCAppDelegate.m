@@ -22,6 +22,7 @@
     
     self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:[[BLCImagesTableViewController alloc] init]];
     
+    self.window.rootViewController.edgesForExtendedLayout = UIRectEdgeNone;
     
     [self.window makeKeyAndVisible];
     
