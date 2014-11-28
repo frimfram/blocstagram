@@ -8,6 +8,8 @@
 
 #import "BLCAppDelegate.h"
 #import "BLCImagesTableViewController.h"
+#import "BLCLoginViewController.h"
+#import "BLCDataSource.h"
 
 @interface BLCAppDelegate ()
 
@@ -20,8 +22,18 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
     
-    self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:[[BLCImagesTableViewController alloc] init]];
+    [BLCDatasource sharedInstance];
     
+    UINavigationController *navVC = [[UINavigationController alloc] init];
+    BLCLoginViewController *loginVC = [[BLCLoginViewController alloc] init];
+    [navVC setViewControllers:@[loginVC] animated:YES];
+    
+    [[NSNotificationCenter defaultCenter] addObserverForName:BLCLoginViewControllerDidGetAccessTokenNotification object:nil queue:nil usingBlock:^(NSNotification *note) {
+        BLCImagesTableViewController *imagesVC = [[BLCImagesTableViewController alloc] init];
+        [navVC setViewControllers:@[imagesVC] animated:YES];
+    }];
+    
+    self.window.rootViewController = navVC;
     
     [self.window makeKeyAndVisible];
     
