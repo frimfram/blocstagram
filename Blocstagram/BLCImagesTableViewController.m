@@ -38,6 +38,8 @@
     
     [self.tableView registerClass:[BLCMediaTableViewCell class] forCellReuseIdentifier:@"mediaCell"];
  
+    //self.tableView.contentInset = UIEdgeInsetsMake(66, 0, 0, 0);
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 }
 
 -(void) dealloc {

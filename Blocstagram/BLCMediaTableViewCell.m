@@ -50,7 +50,14 @@ static NSParagraphStyle *paragraphStyle;
 
 + (CGFloat) heightForMediaItem:(BLCMedia *)mediaItem width:(CGFloat)width {
     // Make a cell
-    BLCMediaTableViewCell *layoutCell = [[BLCMediaTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"layoutCell"];
+    
+    static BLCMediaTableViewCell *layoutCell = nil;
+    
+    if(!layoutCell) {
+        layoutCell = [[BLCMediaTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"layoutCell"];
+    }
+    
+    [layoutCell prepareForReuse];  //cleanup and prepare for next use
     
     // Give it the media item
     layoutCell.mediaItem = mediaItem;
@@ -62,6 +69,7 @@ static NSParagraphStyle *paragraphStyle;
     
     // The height will be wherever the bottom of the comments label is
     return (CGRectGetMaxY(layoutCell.commentLabel.frame) + 65);  //adjust for the nav bar
+    
 }
 
 -(id) initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
@@ -94,6 +102,7 @@ static NSParagraphStyle *paragraphStyle;
         self.commentLabelHeightConstraint = [NSLayoutConstraint constraintWithItem:_commentLabel attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant:100];
         
         [self.contentView addConstraints:@[self.imageHeightConstraint, self.usernameAndCaptionLabelHeightConstraint, self.commentLabelHeightConstraint]];
+        
     }
     return self;
 }
@@ -146,7 +155,8 @@ static NSParagraphStyle *paragraphStyle;
         self.usernameAndCaptionLabelHeightConstraint.constant = usernameLabelSize.height + 20;
         self.commentLabelHeightConstraint.constant = commentLabelSize.height + 20;
 
-        self.separatorInset = UIEdgeInsetsMake(0, 0, 0, CGRectGetWidth(self.bounds));
+        //self.separatorInset = UIEdgeInsetsMake(0, 0, 0, CGRectGetWidth(self.bounds));
+        
     }
 }
 
