@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface BLCUser : NSObject
+@interface BLCUser : NSObject <NSCoding>
 @property (nonatomic, strong) NSString *idNumber;
 @property (nonatomic, strong) NSString *userName;
 @property (nonatomic, strong) NSString *fullName;

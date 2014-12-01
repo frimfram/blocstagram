@@ -149,11 +149,17 @@
 
 #pragma mark - UIScrollViewDelegate
 
+/*
 -(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
     if([scrollView.panGestureRecognizer translationInView:scrollView.superview].y < 0) {
         //scrolling down
         [self infiniteScrollIfNecessary];
     }
+}
+ */
+
+-(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+    [self infiniteScrollIfNecessary];
 }
 
 - (void) infiniteScrollIfNecessary {
