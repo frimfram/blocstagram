@@ -180,6 +180,10 @@
     }
 }
 
+-(void) cell:(BLCMediaTableViewCell *)cell didTapToDownloadImage:(BLCMedia *)media {
+    [[BLCDatasource sharedInstance] requestToDownloadImageForMedia:media];
+}
+
 
 #pragma mark - UIViewControllerTransitioningDelegate
 

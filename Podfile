@@ -1,3 +1,3 @@
 pod 'UICKeyChainStore'
-
+pod 'AFNetworking'
 

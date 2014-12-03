@@ -22,6 +22,7 @@
 @property (nonatomic, strong) NSLayoutConstraint *commentLabelHeightConstraint;
 
 @property (nonatomic, strong) UITapGestureRecognizer *tapGestureRecognizer;
+@property (nonatomic, strong) UITapGestureRecognizer *tapTwoGestureRecognizer;
 @property (nonatomic, strong) UILongPressGestureRecognizer *longPressGestureRecognizer;
 
 @end
@@ -117,6 +118,12 @@ static NSParagraphStyle *paragraphStyle;
         
         [self.contentView addConstraints:@[self.imageHeightConstraint, self.usernameAndCaptionLabelHeightConstraint, self.commentLabelHeightConstraint]];
         
+        self.tapTwoGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapTwoFired:)];
+        self.tapTwoGestureRecognizer.delegate = self;
+        [self.contentView addGestureRecognizer:self.tapTwoGestureRecognizer];
+        self.tapTwoGestureRecognizer.numberOfTouchesRequired = 2;
+        [self.tapGestureRecognizer requireGestureRecognizerToFail:self.tapTwoGestureRecognizer];
+        
     }
     return self;
 }
@@ -205,6 +212,10 @@ static NSParagraphStyle *paragraphStyle;
 
 -(void) tapFired:(UITapGestureRecognizer *)sender {
     [self.delegate cell:self didTapImageView:self.mediaImageView];
+}
+
+-(void) tapTwoFired:(UITapGestureRecognizer *)sender {
+    [self.delegate cell:self didTapToDownloadImage:self.mediaItem];
 }
 
 - (void) longPressFired:(UILongPressGestureRecognizer *)sender {
