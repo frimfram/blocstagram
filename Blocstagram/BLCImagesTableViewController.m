@@ -20,7 +20,11 @@
 @property (nonatomic, weak) UIImageView *lastTappedImageView;
 @end
 
-@implementation BLCImagesTableViewController
+@implementation BLCImagesTableViewController {
+    CGPoint lastOffset;
+    NSTimeInterval lastOffsetCapture;
+    BOOL startDecelerationCapture;
+}
 
 -(id)initWithStyle:(UITableViewStyle)style {
     self = [super initWithStyle:style];
@@ -43,6 +47,11 @@
  
     //self.tableView.contentInset = UIEdgeInsetsMake(66, 0, 0, 0);
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+}
+
+-(void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [self downloadImageForVisibleRows];
 }
 
 -(void) dealloc {
@@ -116,6 +125,16 @@
     
     return cell;
 }
+
+/*
+-(void) tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    BLCMedia *mediaItem = [BLCDatasource sharedInstance].mediaItems[indexPath.row];
+    if (mediaItem.downloadState == BLCMediaDownloadStateNeedsImage) {
+        [[BLCDatasource sharedInstance] downloadImageForMediaItem:mediaItem];
+    }
+}
+ */
+
 
 -(CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     BLCMedia *item = [self items][indexPath.row];
@@ -214,8 +233,57 @@
 }
  */
 
+-(void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView {
+    startDecelerationCapture = YES;
+    lastOffset = CGPointMake(0, 0);
+    lastOffsetCapture = 0;
+}
+
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    if(startDecelerationCapture) {
+        CGPoint currentOffset = scrollView.contentOffset;
+        NSTimeInterval currentTime = [NSDate timeIntervalSinceReferenceDate];
+        
+        NSTimeInterval timeDiff = currentTime - lastOffsetCapture;
+        if(timeDiff > 0.1) {
+            CGFloat distance = currentOffset.y - lastOffset.y;
+            //The multiply by 10, / 1000 isn't really necessary.......
+            CGFloat scrollSpeedNotAbs = (distance * 10) / 1000; //in pixels per millisecond
+            
+            CGFloat scrollSpeed = fabsf(scrollSpeedNotAbs);
+            NSLog(@"speed: %f", scrollSpeed);
+            if (scrollSpeed < 0.5) {
+                [self downloadImageForVisibleRows];
+            }
+            
+            lastOffset = currentOffset;
+            lastOffsetCapture = currentTime;
+        }
+    }
+    
+}
+
+-(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+    if(!decelerate) {
+        [self downloadImageForVisibleRows];
+    }
+    startDecelerationCapture = NO;
+}
+
+-(void)downloadImageForVisibleRows {
+    NSArray *visibleIndexPaths = [self.tableView indexPathsForVisibleRows];
+    for (NSIndexPath *path in visibleIndexPaths) {
+        BLCMedia *mediaItem = [[self items] objectAtIndex:path.row];
+        if(mediaItem.downloadState == BLCMediaDownloadStateNeedsImage) {
+            [[BLCDatasource sharedInstance] downloadImageForMediaItem:[[self items] objectAtIndex:path.row]];
+        }
+    };
+}
+
 -(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+    [self downloadImageForVisibleRows];
     [self infiniteScrollIfNecessary];
+    startDecelerationCapture = NO;
 }
 
 - (void) infiniteScrollIfNecessary {
