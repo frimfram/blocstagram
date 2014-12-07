@@ -224,7 +224,7 @@
         
         [mutableArrayWithKVO addObjectsFromArray:tmpMediaItems];
     }else{
-        [self willChangeValueForKey:@"mediaItems"];
+        //[self willChangeValueForKey:@"mediaItems"];  // results in tableview reload call
         self.mediaItems = tmpMediaItems;
         [self didChangeValueForKey:@"mediaItems"];
     }
@@ -293,6 +293,49 @@
     NSString *documentsDirectory = [paths firstObject];
     NSString *dataPath = [documentsDirectory stringByAppendingString:filename];
     return dataPath;
+}
+
+#pragma mark - Liking Media Items
+
+- (void) toggleLikeOnMediaItem:(BLCMedia *)mediaItem {
+    NSString *urlString = [NSString stringWithFormat:@"media/%@/likes", mediaItem.idNumber];
+    NSDictionary *parameters = @{@"access_token": self.accessToken};
+    
+    if (mediaItem.likeState == BLCLikeStateNotLiked) {
+        
+        mediaItem.likeState = BLCLikeStateLiking;
+        
+        [self.instagramOperationManager POST:urlString parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            mediaItem.likeState = BLCLikeStateLiked;
+            mediaItem.likeCount++;
+            [self reloadMediaItem:mediaItem];
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            mediaItem.likeState = BLCLikeStateNotLiked;
+            [self reloadMediaItem:mediaItem];
+        }];
+        
+    } else if (mediaItem.likeState == BLCLikeStateLiked) {
+        
+        mediaItem.likeState = BLCLikeStateUnliking;
+        
+        [self.instagramOperationManager DELETE:urlString parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            mediaItem.likeState = BLCLikeStateNotLiked;
+            mediaItem.likeCount--;
+            [self reloadMediaItem:mediaItem];
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            mediaItem.likeState = BLCLikeStateLiked;
+            [self reloadMediaItem:mediaItem];
+        }];
+        
+    }
+    
+    //[self reloadMediaItem:mediaItem];
+}
+
+- (void) reloadMediaItem:(BLCMedia *)mediaItem {
+    NSMutableArray *mutableArrayWithKVO = [self mutableArrayValueForKey:@"mediaItems"];
+    NSUInteger index = [mutableArrayWithKVO indexOfObject:mediaItem];
+    [mutableArrayWithKVO replaceObjectAtIndex:index withObject:mediaItem];
 }
 
 @end

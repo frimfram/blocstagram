@@ -126,15 +126,12 @@
     return cell;
 }
 
-/*
 -(void) tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
     BLCMedia *mediaItem = [BLCDatasource sharedInstance].mediaItems[indexPath.row];
     if (mediaItem.downloadState == BLCMediaDownloadStateNeedsImage) {
         [[BLCDatasource sharedInstance] downloadImageForMediaItem:mediaItem];
     }
 }
- */
-
 
 -(CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     BLCMedia *item = [self items][indexPath.row];
@@ -203,6 +200,10 @@
     [[BLCDatasource sharedInstance] requestToDownloadImageForMedia:media];
 }
 
+- (void) cellDidPressLikeButton:(BLCMediaTableViewCell *)cell {
+    [[BLCDatasource sharedInstance] toggleLikeOnMediaItem:cell.mediaItem];
+}
+
 
 #pragma mark - UIViewControllerTransitioningDelegate
 
@@ -224,15 +225,6 @@
 
 #pragma mark - UIScrollViewDelegate
 
-/*
--(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
-    if([scrollView.panGestureRecognizer translationInView:scrollView.superview].y < 0) {
-        //scrolling down
-        [self infiniteScrollIfNecessary];
-    }
-}
- */
-
 -(void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView {
     startDecelerationCapture = YES;
     lastOffset = CGPointMake(0, 0);
@@ -251,8 +243,8 @@
             CGFloat scrollSpeedNotAbs = (distance * 10) / 1000; //in pixels per millisecond
             
             CGFloat scrollSpeed = fabsf(scrollSpeedNotAbs);
-            NSLog(@"speed: %f", scrollSpeed);
-            if (scrollSpeed < 0.5) {
+            //NSLog(@"speed: %f", scrollSpeed);
+            if (scrollSpeed < 0.8) {
                 [self downloadImageForVisibleRows];
             }
             
@@ -264,9 +256,9 @@
 }
 
 -(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
-    if(!decelerate) {
-        [self downloadImageForVisibleRows];
-    }
+    //if(!decelerate) {
+        //[self downloadImageForVisibleRows];
+    //}
     startDecelerationCapture = NO;
 }
 
@@ -281,9 +273,8 @@
 }
 
 -(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
-    [self downloadImageForVisibleRows];
-    [self infiniteScrollIfNecessary];
     startDecelerationCapture = NO;
+    [self infiniteScrollIfNecessary];
 }
 
 - (void) infiniteScrollIfNecessary {

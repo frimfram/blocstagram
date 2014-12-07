@@ -31,6 +31,8 @@
 		02ED6EE01A22EB2400C48C49 /* 9.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 02ED6ED61A22EB2400C48C49 /* 9.jpg */; };
 		02ED6EE11A22EB2400C48C49 /* 10.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 02ED6ED71A22EB2400C48C49 /* 10.jpg */; };
 		02ED6EE41A22EBC900C48C49 /* BLCImagesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02ED6EE31A22EBC900C48C49 /* BLCImagesTableViewController.m */; };
+		02F14F2C1A32EC3D0071863F /* BLCCircleSpinnerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 02F14F2B1A32EC3D0071863F /* BLCCircleSpinnerView.m */; };
+		02F14F2F1A33C59F0071863F /* BLCLikeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 02F14F2E1A33C59F0071863F /* BLCLikeButton.m */; };
 		A4DFC8AC7E84FAE6CDFF221F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 06841737143B79C1AE1DB6C6 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -83,6 +85,10 @@
 		02ED6ED71A22EB2400C48C49 /* 10.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 10.jpg; sourceTree = "<group>"; };
 		02ED6EE21A22EBC900C48C49 /* BLCImagesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLCImagesTableViewController.h; sourceTree = "<group>"; };
 		02ED6EE31A22EBC900C48C49 /* BLCImagesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLCImagesTableViewController.m; sourceTree = "<group>"; };
+		02F14F2A1A32EC3D0071863F /* BLCCircleSpinnerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLCCircleSpinnerView.h; sourceTree = "<group>"; };
+		02F14F2B1A32EC3D0071863F /* BLCCircleSpinnerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLCCircleSpinnerView.m; sourceTree = "<group>"; };
+		02F14F2D1A33C59F0071863F /* BLCLikeButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLCLikeButton.h; sourceTree = "<group>"; };
+		02F14F2E1A33C59F0071863F /* BLCLikeButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLCLikeButton.m; sourceTree = "<group>"; };
 		06841737143B79C1AE1DB6C6 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		221CA22362D51A8359CB4E9B /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		3AC0015DAD4AED20167497EA /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -140,6 +146,10 @@
 			children = (
 				027409AF1A242F8B002DF294 /* BLCMediaTableViewCell.h */,
 				027409B01A242F8B002DF294 /* BLCMediaTableViewCell.m */,
+				02F14F2A1A32EC3D0071863F /* BLCCircleSpinnerView.h */,
+				02F14F2B1A32EC3D0071863F /* BLCCircleSpinnerView.m */,
+				02F14F2D1A33C59F0071863F /* BLCLikeButton.h */,
+				02F14F2E1A33C59F0071863F /* BLCLikeButton.m */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -388,10 +398,12 @@
 			files = (
 				027409A51A23B972002DF294 /* BLCUser.m in Sources */,
 				02A8540B1A2E48CD00FE39DE /* BLCMediaFullScreenAnimator.m in Sources */,
+				02F14F2F1A33C59F0071863F /* BLCLikeButton.m in Sources */,
 				02ED6EAD1A22E8AB00C48C49 /* BLCAppDelegate.m in Sources */,
 				02ED6EAA1A22E8AB00C48C49 /* main.m in Sources */,
 				02ED6EE41A22EBC900C48C49 /* BLCImagesTableViewController.m in Sources */,
 				027409AE1A23BC3F002DF294 /* BLCDatasource.m in Sources */,
+				02F14F2C1A32EC3D0071863F /* BLCCircleSpinnerView.m in Sources */,
 				027409A81A23BA61002DF294 /* BLCMedia.m in Sources */,
 				02A854081A2D94D300FE39DE /* BLCMediaFullScreenViewController.m in Sources */,
 				027409B11A242F8B002DF294 /* BLCMediaTableViewCell.m in Sources */,
