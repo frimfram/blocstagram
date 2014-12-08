@@ -78,6 +78,66 @@
     [self.textView resignFirstResponder];
 }
 
+#pragma mark - Setters & Getters
+
+-(void) setIsWritingComment:(BOOL)isWritingComment {
+    [self setIsWritingComment:isWritingComment animated:NO];
+}
+
+-(void) setIsWritingComment:(BOOL)isWritingComment animated:(BOOL)animated {
+    _isWritingComment = isWritingComment;
+    
+    if(animated) {
+        [UIView animateWithDuration:0.2 animations:^{
+            [self layoutSubviews];
+        }];
+    }else{
+        [self layoutSubviews];
+    }
+}
+
+-(void) setText:(NSString *)text {
+    _text = text;
+    self.textView.text = text;
+    self.textView.userInteractionEnabled = YES;
+    self.isWritingComment = text.length > 0;
+}
+
+#pragma mark - Button Target
+
+- (void) commentButtonPressed:(UIButton *) sender {
+    if (self.isWritingComment) {
+        [self.textView resignFirstResponder];
+        self.textView.userInteractionEnabled = NO;
+        [self.delegate commentViewDidPressCommentButton:self];
+    } else {
+        [self setIsWritingComment:YES animated:YES];
+        [self.textView becomeFirstResponder];
+    }
+}
+
+#pragma mark - UITextViewDelegate
+
+- (BOOL)textViewShouldBeginEditing:(UITextView *)textView {
+    [self setIsWritingComment:YES animated:YES];
+    [self.delegate commentViewWillStartEditing:self];
+    
+    return YES;
+}
+
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
+    NSString *newText = [textView.text stringByReplacingCharactersInRange:range withString:text];
+    [self.delegate commentView:self textDidChange:newText];
+    return YES;
+}
+
+- (BOOL)textViewShouldEndEditing:(UITextView *)textView {
+    BOOL hasComment = (textView.text.length > 0);
+    [self setIsWritingComment:hasComment animated:YES];
+    
+    return YES;
+}
+
 
 @end
 
