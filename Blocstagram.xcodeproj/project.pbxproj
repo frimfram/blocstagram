@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		02177F801A35138E00F0C90A /* BLCComposeCommentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 02177F7F1A35138E00F0C90A /* BLCComposeCommentView.m */; };
 		027409A51A23B972002DF294 /* BLCUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 027409A41A23B972002DF294 /* BLCUser.m */; };
 		027409A81A23BA61002DF294 /* BLCMedia.m in Sources */ = {isa = PBXBuildFile; fileRef = 027409A71A23BA61002DF294 /* BLCMedia.m */; };
 		027409AB1A23BB52002DF294 /* BLCComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 027409AA1A23BB52002DF294 /* BLCComment.m */; };
@@ -47,6 +48,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		02177F7E1A35138E00F0C90A /* BLCComposeCommentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLCComposeCommentView.h; sourceTree = "<group>"; };
+		02177F7F1A35138E00F0C90A /* BLCComposeCommentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLCComposeCommentView.m; sourceTree = "<group>"; };
 		027409A31A23B972002DF294 /* BLCUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLCUser.h; sourceTree = "<group>"; };
 		027409A41A23B972002DF294 /* BLCUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLCUser.m; sourceTree = "<group>"; };
 		027409A61A23BA61002DF294 /* BLCMedia.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLCMedia.h; sourceTree = "<group>"; };
@@ -150,6 +153,8 @@
 				02F14F2B1A32EC3D0071863F /* BLCCircleSpinnerView.m */,
 				02F14F2D1A33C59F0071863F /* BLCLikeButton.h */,
 				02F14F2E1A33C59F0071863F /* BLCLikeButton.m */,
+				02177F7E1A35138E00F0C90A /* BLCComposeCommentView.h */,
+				02177F7F1A35138E00F0C90A /* BLCComposeCommentView.m */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -409,6 +414,7 @@
 				027409B11A242F8B002DF294 /* BLCMediaTableViewCell.m in Sources */,
 				027409AB1A23BB52002DF294 /* BLCComment.m in Sources */,
 				027409B41A283992002DF294 /* BLCLoginViewController.m in Sources */,
+				02177F801A35138E00F0C90A /* BLCComposeCommentView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
