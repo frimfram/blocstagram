@@ -329,7 +329,7 @@
         
     }
     
-    //[self reloadMediaItem:mediaItem];
+    [self reloadMediaItem:mediaItem];
 }
 
 - (void) reloadMediaItem:(BLCMedia *)mediaItem {
