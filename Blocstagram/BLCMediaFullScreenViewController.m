@@ -11,8 +11,6 @@
 
 @interface BLCMediaFullScreenViewController () <UIScrollViewDelegate>
 
-@property (nonatomic, strong) BLCMedia *media;
-
 @property (nonatomic, strong) UITapGestureRecognizer *tap;
 @property (nonatomic, strong) UITapGestureRecognizer *doubleTap;
 
@@ -64,9 +62,19 @@
 -(void) viewWillLayoutSubviews {
     [super viewWillLayoutSubviews];
     self.scrollView.frame = self.view.bounds;
+    CGSize scrollViewFrameSize = self.scrollView.frame.size;
     
+    [self recalculateZoomScale];
+    
+    self.shareButton.frame = CGRectMake(scrollViewFrameSize.width-100, 10, 100, 70);
+}
+
+-(void) recalculateZoomScale {
     CGSize scrollViewFrameSize = self.scrollView.frame.size;
     CGSize scrollViewContentSize = self.scrollView.contentSize;
+    
+    scrollViewContentSize.height /= self.scrollView.zoomScale;
+    scrollViewContentSize.width /= self.scrollView.zoomScale;
     
     CGFloat scaleWidth = scrollViewFrameSize.width / scrollViewContentSize.width;
     CGFloat scaleHeight = scrollViewFrameSize.height / scrollViewContentSize.height;
@@ -74,8 +82,6 @@
     
     self.scrollView.minimumZoomScale = minScale;
     self.scrollView.maximumZoomScale = 1;
-    
-    self.shareButton.frame = CGRectMake(scrollViewFrameSize.width-100, 10, 100, 70);
 }
 
 -(void) viewWillAppear:(BOOL)animated {

@@ -19,6 +19,9 @@
 		027409B41A283992002DF294 /* BLCLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 027409B31A283992002DF294 /* BLCLoginViewController.m */; };
 		02A854081A2D94D300FE39DE /* BLCMediaFullScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02A854071A2D94D300FE39DE /* BLCMediaFullScreenViewController.m */; };
 		02A8540B1A2E48CD00FE39DE /* BLCMediaFullScreenAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 02A8540A1A2E48CD00FE39DE /* BLCMediaFullScreenAnimator.m */; };
+		02E441571A3A339B00DF1C8F /* BLCCropBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 02E441561A3A339B00DF1C8F /* BLCCropBox.m */; };
+		02E4415A1A3A688600DF1C8F /* BLCCropImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02E441591A3A688600DF1C8F /* BLCCropImageViewController.m */; };
+		02E4415D1A3A745600DF1C8F /* BLCImageLibraryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02E4415C1A3A745600DF1C8F /* BLCImageLibraryViewController.m */; };
 		02ED6EAA1A22E8AB00C48C49 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 02ED6EA91A22E8AB00C48C49 /* main.m */; };
 		02ED6EAD1A22E8AB00C48C49 /* BLCAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 02ED6EAC1A22E8AB00C48C49 /* BLCAppDelegate.m */; };
 		02ED6EB51A22E8AB00C48C49 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02ED6EB41A22E8AB00C48C49 /* Images.xcassets */; };
@@ -75,6 +78,12 @@
 		02A854071A2D94D300FE39DE /* BLCMediaFullScreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLCMediaFullScreenViewController.m; sourceTree = "<group>"; };
 		02A854091A2E48CD00FE39DE /* BLCMediaFullScreenAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BLCMediaFullScreenAnimator.h; path = misc/BLCMediaFullScreenAnimator.h; sourceTree = "<group>"; };
 		02A8540A1A2E48CD00FE39DE /* BLCMediaFullScreenAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BLCMediaFullScreenAnimator.m; path = misc/BLCMediaFullScreenAnimator.m; sourceTree = "<group>"; };
+		02E441551A3A339B00DF1C8F /* BLCCropBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLCCropBox.h; sourceTree = "<group>"; };
+		02E441561A3A339B00DF1C8F /* BLCCropBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLCCropBox.m; sourceTree = "<group>"; };
+		02E441581A3A688600DF1C8F /* BLCCropImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLCCropImageViewController.h; sourceTree = "<group>"; };
+		02E441591A3A688600DF1C8F /* BLCCropImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLCCropImageViewController.m; sourceTree = "<group>"; };
+		02E4415B1A3A745600DF1C8F /* BLCImageLibraryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLCImageLibraryViewController.h; sourceTree = "<group>"; };
+		02E4415C1A3A745600DF1C8F /* BLCImageLibraryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLCImageLibraryViewController.m; sourceTree = "<group>"; };
 		02ED6EA41A22E8AB00C48C49 /* Blocstagram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Blocstagram.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		02ED6EA81A22E8AB00C48C49 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		02ED6EA91A22E8AB00C48C49 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -153,6 +162,10 @@
 				0202F5881A36C0C500DAEF07 /* BLCCameraViewController.m */,
 				0202F58A1A36CA9E00DAEF07 /* UIImage+BLCImageUtilities.h */,
 				0202F58B1A36CA9E00DAEF07 /* UIImage+BLCImageUtilities.m */,
+				02E441581A3A688600DF1C8F /* BLCCropImageViewController.h */,
+				02E441591A3A688600DF1C8F /* BLCCropImageViewController.m */,
+				02E4415B1A3A745600DF1C8F /* BLCImageLibraryViewController.h */,
+				02E4415C1A3A745600DF1C8F /* BLCImageLibraryViewController.m */,
 			);
 			name = controller;
 			sourceTree = "<group>";
@@ -170,6 +183,8 @@
 				02177F7F1A35138E00F0C90A /* BLCComposeCommentView.m */,
 				0202F5841A35880600DAEF07 /* BLCCameraToolbar.h */,
 				0202F5851A35880600DAEF07 /* BLCCameraToolbar.m */,
+				02E441551A3A339B00DF1C8F /* BLCCropBox.h */,
+				02E441561A3A339B00DF1C8F /* BLCCropBox.m */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -417,9 +432,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02E4415A1A3A688600DF1C8F /* BLCCropImageViewController.m in Sources */,
 				027409A51A23B972002DF294 /* BLCUser.m in Sources */,
 				0202F5861A35880600DAEF07 /* BLCCameraToolbar.m in Sources */,
 				02A8540B1A2E48CD00FE39DE /* BLCMediaFullScreenAnimator.m in Sources */,
+				02E4415D1A3A745600DF1C8F /* BLCImageLibraryViewController.m in Sources */,
 				02F14F2F1A33C59F0071863F /* BLCLikeButton.m in Sources */,
 				02ED6EAD1A22E8AB00C48C49 /* BLCAppDelegate.m in Sources */,
 				02ED6EAA1A22E8AB00C48C49 /* main.m in Sources */,
@@ -430,6 +447,7 @@
 				02A854081A2D94D300FE39DE /* BLCMediaFullScreenViewController.m in Sources */,
 				027409B11A242F8B002DF294 /* BLCMediaTableViewCell.m in Sources */,
 				027409AB1A23BB52002DF294 /* BLCComment.m in Sources */,
+				02E441571A3A339B00DF1C8F /* BLCCropBox.m in Sources */,
 				0202F5891A36C0C500DAEF07 /* BLCCameraViewController.m in Sources */,
 				027409B41A283992002DF294 /* BLCLoginViewController.m in Sources */,
 				02177F801A35138E00F0C90A /* BLCComposeCommentView.m in Sources */,
