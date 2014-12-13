@@ -30,6 +30,8 @@
 
 @implementation BLCDatasource
 
+ NSString *const BLCImageFinishedNotification = @"BLCImageFinishedNotification";
+
 + (instancetype) sharedInstance {
     static dispatch_once_t once;
     static id sharedInstance;
