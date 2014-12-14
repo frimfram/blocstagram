@@ -10,6 +10,10 @@
 		0202F5861A35880600DAEF07 /* BLCCameraToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 0202F5851A35880600DAEF07 /* BLCCameraToolbar.m */; };
 		0202F5891A36C0C500DAEF07 /* BLCCameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0202F5881A36C0C500DAEF07 /* BLCCameraViewController.m */; };
 		0202F58C1A36CA9E00DAEF07 /* UIImage+BLCImageUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 0202F58B1A36CA9E00DAEF07 /* UIImage+BLCImageUtilities.m */; };
+		020C2FF11A3D0A0D00A43A8E /* BLCUserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 020C2FF01A3D0A0D00A43A8E /* BLCUserTests.m */; };
+		020C2FF31A3D0E8000A43A8E /* BLCCommentTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 020C2FF21A3D0E8000A43A8E /* BLCCommentTests.m */; };
+		020C2FF51A3D0F9A00A43A8E /* BLCMediaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 020C2FF41A3D0F9A00A43A8E /* BLCMediaTests.m */; };
+		020C2FF91A3D1E9C00A43A8E /* BLCComposeCommentViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 020C2FF81A3D1E9C00A43A8E /* BLCComposeCommentViewTests.m */; };
 		02177F801A35138E00F0C90A /* BLCComposeCommentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 02177F7F1A35138E00F0C90A /* BLCComposeCommentView.m */; };
 		027409A51A23B972002DF294 /* BLCUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 027409A41A23B972002DF294 /* BLCUser.m */; };
 		027409A81A23BA61002DF294 /* BLCMedia.m in Sources */ = {isa = PBXBuildFile; fileRef = 027409A71A23BA61002DF294 /* BLCMedia.m */; };
@@ -62,6 +66,10 @@
 		0202F5881A36C0C500DAEF07 /* BLCCameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLCCameraViewController.m; sourceTree = "<group>"; };
 		0202F58A1A36CA9E00DAEF07 /* UIImage+BLCImageUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+BLCImageUtilities.h"; sourceTree = "<group>"; };
 		0202F58B1A36CA9E00DAEF07 /* UIImage+BLCImageUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+BLCImageUtilities.m"; sourceTree = "<group>"; };
+		020C2FF01A3D0A0D00A43A8E /* BLCUserTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLCUserTests.m; sourceTree = "<group>"; };
+		020C2FF21A3D0E8000A43A8E /* BLCCommentTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLCCommentTests.m; sourceTree = "<group>"; };
+		020C2FF41A3D0F9A00A43A8E /* BLCMediaTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLCMediaTests.m; sourceTree = "<group>"; };
+		020C2FF81A3D1E9C00A43A8E /* BLCComposeCommentViewTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLCComposeCommentViewTests.m; sourceTree = "<group>"; };
 		02177F7E1A35138E00F0C90A /* BLCComposeCommentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLCComposeCommentView.h; sourceTree = "<group>"; };
 		02177F7F1A35138E00F0C90A /* BLCComposeCommentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLCComposeCommentView.m; sourceTree = "<group>"; };
 		027409A31A23B972002DF294 /* BLCUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLCUser.h; sourceTree = "<group>"; };
@@ -253,6 +261,10 @@
 			children = (
 				02ED6EC31A22E8AB00C48C49 /* BlocstagramTests.m */,
 				02ED6EC11A22E8AB00C48C49 /* Supporting Files */,
+				020C2FF01A3D0A0D00A43A8E /* BLCUserTests.m */,
+				020C2FF21A3D0E8000A43A8E /* BLCCommentTests.m */,
+				020C2FF41A3D0F9A00A43A8E /* BLCMediaTests.m */,
+				020C2FF81A3D1E9C00A43A8E /* BLCComposeCommentViewTests.m */,
 			);
 			path = BlocstagramTests;
 			sourceTree = "<group>";
@@ -473,7 +485,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				020C2FF11A3D0A0D00A43A8E /* BLCUserTests.m in Sources */,
 				02ED6EC41A22E8AB00C48C49 /* BlocstagramTests.m in Sources */,
+				020C2FF91A3D1E9C00A43A8E /* BLCComposeCommentViewTests.m in Sources */,
+				020C2FF51A3D0F9A00A43A8E /* BLCMediaTests.m in Sources */,
+				020C2FF31A3D0E8000A43A8E /* BLCCommentTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

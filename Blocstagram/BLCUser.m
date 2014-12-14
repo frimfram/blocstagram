@@ -13,7 +13,7 @@
     self = [super init];
     
     if(self) {
-        self.idNumber = userDictionary[@"profile_picture"];
+        self.idNumber = userDictionary[@"id"];
         self.userName = userDictionary[@"username"];
         self.fullName = userDictionary[@"full_name"];
         
