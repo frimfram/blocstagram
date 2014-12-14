@@ -91,7 +91,7 @@
     [aCoder encodeObject:self.caption forKey:NSStringFromSelector(@selector(caption))];
     [aCoder encodeObject:self.comments forKey:NSStringFromSelector(@selector(comments))];
     [aCoder encodeInteger:self.likeState forKey:NSStringFromSelector(@selector(likeState))];
-    [aCoder encodeObject:[NSString stringWithFormat:@"%ld",self.likeCount]  forKey:NSStringFromSelector(@selector(likeCount))];
+    [aCoder encodeObject:[NSString stringWithFormat:@"%ld",(unsigned long)self.likeCount]  forKey:NSStringFromSelector(@selector(likeCount))];
 }
 
 @end
