@@ -21,6 +21,7 @@ typedef void (^BLCNewItemCompletionBlock)(NSError *error);
 
 @property (nonatomic, strong, readonly) NSArray *mediaItems;
 @property (nonatomic, strong, readonly) NSString *accessToken;
+@property (nonatomic, strong) NSString *minID;
 
 - (void)deleteMediaItem:(BLCMedia *)item;
 - (void)requestNewItemsWithCompletionHandler:(BLCNewItemCompletionBlock)completionHandler;
